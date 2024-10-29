@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation - Suhaila Cooking Experience</title>
+    <link rel="stylesheet" href="reservation-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body, .navbar a, h2, p {
+    font-family: 'Roboto', sans-serif;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+       
+
+        /* Navbar Styles */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            background-color: #5a67f9;
+            padding: 5px 0;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            transition: top 0.3s; /* Smooth transition for hiding/showing */
+            opacity: 100%;
+            
+        }
+        .navbar a.active {
+    background-color: #dbdcd9; /* Active background color */
+    color: #333; /* Text color for active link */
+    font-weight: bold; /* Optional: make it bold */
+    border-bottom: 2px solid #fff; /* Optional: underline effect */
+}
+
+
+        .navbar a {
+            color: gold;
+            text-decoration: none;
+            padding: 14px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #ebecec;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 0px;       
+            color: #984;
+            padding: 0 10px; /* Add padding for centered spacing */
+        }
+
+        .reservation-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            gap: 10px; /* Space between items */
+        }
+
+        .reservation-item {
+            flex: 1 1 calc(33% - 40px); /* Updated to fit items better in container */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            padding: 15px; /* Increased padding */
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .reservation-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .reservation-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .reservation-item h3 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            color: #5a67f9;
+        }
+
+        .reservation-item p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .reservation-item .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .reservation-item .button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background: #cbe2fb;
+            color: #728605;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            max-width: 800px;
+            margin: 40px auto; /* Center form with margin */
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* Loading Spinner Styles */
+        #loading-spinner {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .reservation-item {
+                flex: 1 1 100%;
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                font-size: 1.8em;
+                padding: 0 15px; /* Add padding for mobile */
+            }
+
+            form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navigation Menu -->
+<div class="navbar">
+    <a href="home.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="Reservation.html" class="active">Reservations</a>
+    <a href="Product.html">Product</a>
+    <a href="contact.html">Contact</a>
+    <a href="Blog.html">BLog</a>
+   
+</div>
+<br>
+
+    <h2>Choose Your Cooking Experience</h2>
+
+    <!-- Reservation Section -->
+    <div class="reservation-container">
+        <!-- Experience 1 -->
+        <div class="reservation-item">
+            <img src="Experience1.jpg" alt="Authentic Cooking Class">
+            <h3>Authentic Cooking Class</h3>
+            <p>Join our family in the kitchen and learn to prepare traditional dishes with recipes passed down for generations.</p>
+            <P>45$</P>
+            <a href="javascript:void(0);" class="button" onclick="openForm('Authentic Cooking Class')">Book Now</a>
+        </div>
+
+        <!-- Experience 2 -->
+        <div class="reservation-item">
+            <img src="experience2.jpg" alt="Food Taste Tour">
+            <h3>Food Taste Tour</h3>
+            <p>Explore the rich flavors of our region in a guided food tour, discovering local cuisine and culture.</p>
+            <P>20$</P>
+            <a href="javascript:void(0);" class="button" onclick="openForm('Food Taste Tour')">Book Now</a>
+        </div>
+
+        <!-- Experience 3 -->
+        <div class="reservation-item">
+            <img src="Experience3.jpg" alt="Dining Experience">
+            <h3>Dining Experience</h3>
+            <p>Enjoy a meal with our family, sharing stories, recipes, and delicious food in a warm, inviting atmosphere.</p>
+            <P>15$</P>
+            <a href="javascript:void(0);" class="button" onclick="openForm('Dining Experience')">Book Now</a>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loading-spinner">
+        <img src="loading-spinner.gif" alt="Loading...">
+    </div>
+
+    <!-- Booking Form Section -->
+    <h2 id="booking-form" style="margin-top: 50px;">select one of the experience to start the booking form</h2>
+    <form id="reservation-form" action="http://localhost:3000/send-email" method="POST">
+        <div class="form-group">
+            <label for="experience">Experience:</label>
+            <input type="text" id="experience" name="experience" required readonly>
+        </div>
+        <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+        <div class="form-group">
+            <label for="attendees">Number of Attendees:</label>
+            <select id="attendees" name="attendees" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div class="form-group">
+            <label for="comments">Comments:</label>
+            <textarea id="comments" name="comments"></textarea>
+        </div>
+        <button type="submit">Book Now</button>
+    </form>
+
+    <footer>
+        <p>&copy; 2024 Suhaila Cooking Experience. All rights reserved.</p>
+    </footer>
+    
+
+    <script>
+        
+        // Function to get query parameters from URL
+    function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+            experience: params.get('experience'),
+            date: params.get('date')
+        };
+    }
+
+    // Populate form with experience and date from URL
+    function populateForm() {
+        const params = getQueryParams();
+        const experienceInput = document.getElementById('experience');
+        const dateInput = document.getElementById('date');
+        const reservationForm = document.getElementById('reservation-form');
+
+        if (params.experience) {
+            experienceInput.value = params.experience;
+        }
+
+        if (params.date) {
+            dateInput.value = params.date;
+        }
+        
+        if (params.experience || params.date) {
+            reservationForm.style.display = 'block'; // Show form only if experience or date is present
+            reservationForm.scrollIntoView({ behavior: 'smooth' }); // Scroll to the form
+
+        }
+    }
+
+    // Open the booking form and set the experience value
+    function openForm(experience) {
+        document.getElementById('experience').value = experience; // Set experience input value
+        document.getElementById('reservation-form').style.display = 'block'; // Show the form
+        document.getElementById('booking-form').scrollIntoView({ behavior: 'smooth' }); // Scroll to form
+    }
+
+    // Initialize form population
+    populateForm();
+        
+
+        document.getElementById('reservation-form').onsubmit = function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Show loading spinner
+            document.getElementById('loading-spinner').style.display = 'block';
+
+            fetch('http://localhost:3000/send-email', {
+                method: 'POST',
+                body: new FormData(this)
+            })
+            .then(response => {
+                // Hide the loading spinner after submission
+                document.getElementById('loading-spinner').style.display = 'none';
+
+                if (response.ok) {
+                    alert('Thank you for your reservation! We will contact you soon.');
+                    this.reset(); // Clear the form
+                    document.getElementById('reservation-form').style.display = 'none'; // Hide form after submission
+                } else {
+                    alert('There was a problem with your reservation. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('loading-spinner').style.display = 'none'; // Hide spinner if error occurs
+                alert('There was a problem with your reservation. Please try again.');
+            });
+        };
+        
+        
+       // Variables for scroll behavior
+    let lastScrollTop = 0;
+    const navbar = document.querySelector('.navbar');
+
+    window.addEventListener('scroll', function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop) {
+            // Scrolling down
+            navbar.style.top = '-60px'; // Adjust based on navbar height
+        } else {
+            // Scrolling up
+            navbar.style.top = '0';
+        }
+        lastScrollTop = scrollTop;
+    });
+    
+    
+    
+    </script>
+</body>
+
+</html>

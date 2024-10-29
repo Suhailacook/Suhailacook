@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suhaila (Connecting Through Cooking)</title>
+    <meta name="description" content="Join Suhaila for authentic cooking classes and experience the flavors of traditional dishes. Book your culinary adventure today!">
+
+    <style>
+.logo-fade-in {
+    opacity: 0; /* Start transparent */
+    animation: fadeInLogo 5s ease forwards; /* Fade in effect */
+}
+
+@keyframes fadeInLogo {
+    from {
+        opacity: 0; /* Start invisible */
+    }
+    to {
+        opacity: 1; /* End visible */
+    }
+}
+
+
+   .about-text {
+    opacity: 0; /* Initially hidden */
+            transform: translateY(20px); /* Move slightly down */
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Transition effect */
+}
+
+.about-text.visible {
+    opacity: 1; /* Make visible */
+    transform: translateY(0); /* Reset position */
+}
+/* Animation for fade-in and slide-up */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Add the animation to headings when they scroll into view */
+.fade-in-heading {
+    opacity: 0;  /* Start hidden */
+    animation: fadeInUp 1s ease-in-out forwards; /* Fade in and slide up */
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+/* Additional styling for the headings */
+h2, h3 { /* Adjust as per your headings */
+    text-align: center;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+
+body {
+    background: linear-gradient(to bottom, #f9f9f9, #fdfbfb); /* Light to slightly darker gray */
+}
+header {
+    background-color: #007BFF; /* Dark blue for header */
+}
+
+
+section {
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+        /* CSS Styles */
+        
+        html {
+            scroll-behavior: smooth; /* Enables smooth scrolling */
+        }
+
+        body {
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            font-family: verdana;
+        }
+
+        h1 {
+            font-family: Verdana;
+            margin-bottom: 20px;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            background-color: #5a67f9;
+            padding: 5px 0;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            transition: top 0.3s ease;  /* Smooth hide/show effect */
+            z-index: 1000;  /* Keep navbar on top */
+            opacity: 100%;
+        
+
+        }
+        .navbar a.active {
+    background-color: #dbdcd9; /* Active background color */
+    color: #333; /* Text color for active link */
+    font-weight: bold; /* Optional: make it bold */
+    border-bottom: 2px solid #fff; /* Optional: underline effect */
+}
+   
+        .scrollToTop {
+    position: fixed;
+    bottom: 110px;
+    right: 40px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    display: none; /* Initially hidden */
+    z-index: 1000;
+}
+
+.scrollToTop:hover {
+    background-color: #0056b3;
+}
+
+        .navbar a {
+            color: rgb(218, 232, 20);
+            text-decoration: none;
+            padding: 14px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #f5f9f6;
+        }
+
+        /* Image Hover and Scaling */
+        
+
+        .about-container .about-text:hover {
+            transform: scale(1.05);
+        }
+
+        /* Button Styles */
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffffff;
+            color: rgb(15, 15, 15);
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 2px solid black;
+            max-width: 33%;
+            margin: 20px auto;
+        }
+
+        .button:hover {
+            background-color: #b1bfb2;
+        }
+
+        /* Gallery Styles */
+        .gallery {
+            position: relative;
+            width: 1200px;
+            height: 500px;
+            overflow: hidden;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            opacity: 0.95;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            position: absolute;
+            object-fit: cover;
+            transition: opacity 1s ease;
+            top: 0;
+            left: 0;
+        }
+
+        .active {
+            opacity: 1;
+        }
+
+        /* About Section Styles */
+        .about-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+
+        .about-image {
+            flex: 1;
+            max-width: 40%;
+        }
+
+        .about-text {
+            flex: 1;
+            padding: 20px;
+            text-align: left;
+        }
+
+        /* Product Gallery Styles */
+        .product-gallery {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .product-item {
+            flex: 1 1 calc(33% - 40px);
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #f9f9f9;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        /* Reviews Section Styles */
+        .review-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: #d6e6cc;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .review {
+            display: none;
+            text-align: center;
+        }
+
+        .review.active {
+            display: block;
+        }
+
+        .review p {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .review a {
+            color: #b3b9c0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .review a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer Styles */
+        footer {
+            margin-top: 40px;
+            padding: 10px 0;
+            background-color: #cbe2fb;
+            text-align: center;
+        }
+
+        .whatsapp-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        /* Add padding to prevent overlap */
+        #about, #product {
+            padding-top: 60px; /* Space for sticky navbar */
+        }
+        /* Media Queries for Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column; /* Stack navbar items vertically */
+            }
+
+            .about-container {
+                flex-direction: column; /* Stack about image and text vertically */
+            }
+
+            .about-image {
+                max-width: 100%;
+                width: 100%; /* Full width for small screens */
+            }
+
+            .product-item {
+                flex: 1 1 calc(100% - 40px); /* Full width for product items */
+            }
+
+            .gallery {
+                width: 100%; /* Full width for gallery */
+                height: 300px; /* Adjust height for mobile */
+            }
+
+            .button {
+                max-width: 80%; /* Wider buttons for small screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em; /* Smaller heading on extra small screens */
+            }
+
+            .review-section {
+                padding: 20px; /* Less padding on small screens */
+            }
+
+            .product-info h3 {
+                font-size: 1.2em; /* Adjust product info heading size */
+            }
+
+            .product-info p {
+                font-size: 0.9em; /* Adjust product info paragraph size */
+            }
+            #blog-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.recent-posts {
+    display: flex;
+    flex-direction: column;
+}
+
+.recent-posts article {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.recent-posts article h3 a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <div class="navbar">
+        <a href="home.html" class="active">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="Reservation.html">Reservations</a>
+        <a href="Product.html">Product</a>
+        <a href="contact.html">Contact</a>
+        <a href="Blog.html">Blog</a>
+
+    </div>
+    <br>
+    <br>
+
+    <h2 class="fade-in-heading">SUHAILA AUTHENTIC COOKING EXPERIENCE</h2>
+    <img src="logo.png" alt="Logo" class="logo-fade-in" style="width: 200px;">
+    <!-- Image Gallery -->
+    <div class="gallery">
+        <img src="image1.jpg" alt="Image 1" class="slide active" loading="lazy">
+        <img src="image2.jpg" alt="Imaage 2" class="slide" loading="lazy">
+        <img src="image3.jpg" alt="Image 3" class="slide" loading="lazy">
+    </div>
+
+    <!-- About Suhaila Section -->
+    <h2 class="fade-in-heading">About SUHAILA Family</h2>
+    <div class="about-container">
+        <img src="Family.jpg" alt="Family" class="about-image" loading="lazy">
+        <div class="about-text">
+            <h3>Welcome to Our Culinary Family!</h3>
+            <p>At Suhaila Family, cooking is a celebration of life and togetherness. Our kitchen is where generations share cherished recipes and create delicious memories.</p>
+            <p>Join us for authentic cooking classes, experience our warm family atmosphere, and let us cater your special events. Come be part of our culinary tradition!</p>
+        </div>
+    </div>
+    <section id="blog-section">
+        <h2>Explore Our Blog</h2>
+        <p>Welcome to Suhaila's Culinary Blog! Discover delicious recipes, cooking tips, and behind-the-scenes insights into our culinary classes. Join us on our journey to share the joy of cooking.</p>
+        <div class="recent-posts">
+            <article>
+                <h3><a href="post1.html">Cooking with Love: A Journey Through Traditional Dishes</a></h3>
+                <p>Explore the flavors and stories behind our favorite traditional dishes. <a href="post1.html">Read More</a></p>
+            </article>
+            <article>
+                <h3><a href="post2.html">5 Essential Cooking Tips for Beginners</a></h3>
+                <p>Master the basics of cooking with these essential tips. <a href="post2.html">Read More</a></p>
+            </article>
+            <!-- More recent posts can be added here -->
+        </div>
+        <a href="blog.html" class="button">Visit the Blog</a>
+    </section>
+
+    <!-- WhatsApp Image Link -->
+    <a href="https://wa.me/+962798460448" target="_blank" class="whatsapp-fixed">
+        <img src="whatsapp.png" alt="Contact Us on WhatsApp" width="100" height="100">
+    </a>
+
+   <!-- Product Gallery Section -->
+<h2 class="fade-in-heading">Our Cooking Experiences</h2>
+<div class="product-gallery">
+    <div class="product-item">
+        <img src="experience1.jpg" alt="Cooking Class" class="product-image" loading="lazy">
+        <div class="product-info">
+            <h3>Authentic Cooking Class</h3>
+            <p>Learn to cook traditional dishes with our family recipes.</p>
+            <a href="#" class="button" onclick="redirectToReservation('Authentic Cooking Class')">Book Now</a>
+        </div>
+    </div>
+    <div class="product-item">
+        <img src="experience2.jpg" alt="Food Taste Tour" class="product-image" loading="lazy">
+        <div class="product-info">
+            <h3>Food Taste Tour</h3>
+            <p>Discover local flavors and experience vibrant cuisine.</p>
+            <a href="#" class="button" onclick="redirectToReservation('Food Taste Tour')">Book Now</a>
+        </div>
+    </div>
+    <div class="product-item">
+        <img src="experience3.jpg" alt="Dining Experience" class="product-image" loading="lazy">
+        <div class="product-info">
+            <h3>Dining Experience</h3>
+            <p>Sharing meals, stories, and culture with our family.</p>
+            <a href="#" class="button" onclick="redirectToReservation('Dining Experience')">Book Now</a>
+        </div>
+    </div>
+</div>
+  
+<script>
+    function redirectToReservation(experienceName) {
+        // Redirect to reservation page with the experience name as a query parameter
+        window.location.href = `reservation.html?experience=${encodeURIComponent(experienceName)}`;
+    }
+</script>
+
+    <!-- Review Section -->
+    <div class="review-section">
+        <h2>What Our Guests Say</h2>
+        <div class="review active">
+            <p>"Suhaila's cooking class was a delightful experience. I learned so much!"</p>
+            <a href="#review1">- Alex</a>
+        </div>
+        <div class="review">
+            <p>"A wonderful family atmosphere. I felt right at home!"</p>
+            <a href="#review2">- Emma</a>
+        </div>
+        <div class="review">
+            <p>"The food was absolutely delicious! Highly recommended."</p>
+            <a href="#review3">- John</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+   <!-- Footer Section --> <footer> <p>&copy; 2024 Suhaila Cooking Experience. All rights reserved.</p> <p>Contact us: <a href="mailto:suhaila.cook@gmail.com">suhaila.cook@gmail.com</a></p> <p>Mobile: +962798460448</p> <p>Connect with us on: <a href="https://www.instagram.com/yourusername" target="_blank">Instagram</a> | <a href="https://www.facebook.com/yourusername" target="_blank">Facebook</a> </p> <!-- Google Maps Embed --> <h3>Find Us Here:</h3> <iframe src="https://www.google.com/maps/embed?pb=..." width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe> </footer>
+<!-- Scroll to Top Button -->
+<button id="scrollToTop" class="scrollToTop">↑ Top</button>
+<script>
+    function openForm(experience) {
+    document.getElementById('experience').value = experience; // Set the selected experience
+    document.getElementById('reservation-form').style.display = 'block'; // Show the form
+    document.getElementById('booking-form').scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to form
+}
+
+    // Function to check if an element is in the viewport
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    // Function to handle scroll event
+    function handleScroll() {
+        const aboutText = document.querySelector('.about-text');
+        if (isInViewport(aboutText)) {
+            aboutText.classList.add('visible'); // Add visible class when in view
+        }
+    }
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+</script>
+
+    <script>
+        
+
+        
+        // Image Gallery Slideshow
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (index + slides.length) % slides.length; // Ensure index wraps around
+            slides[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        setInterval(nextSlide, 3000); // Change slide every 3 seconds
+
+        // Review Section Navigation
+        const reviews = document.querySelectorAll('.review');
+        let currentReview = 0;
+
+        function showReview(index) {
+            reviews[currentReview].classList.remove('active');
+            currentReview = (index + reviews.length) % reviews.length; // Ensure index wraps around
+            reviews[currentReview].classList.add('active');
+        }
+
+        function nextReview() {
+            showReview(currentReview + 1);
+        }
+
+        setInterval(nextReview, 3000); // Change review every 3 seconds
+
+        // Add click event for manual review navigation
+        reviews.forEach((review, index) => {
+            review.querySelector('a').addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default anchor behavior
+                reviews.forEach(r => r.classList.remove('active'));
+                showReview(index); // Show clicked review
+            });
+        });
+        // Show the button when scrolling down
+        window.onscroll = function() {
+            const button = document.getElementById('scrollToTop');
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                button.style.display = "block";
+            } else {
+                button.style.display = "none";
+            }
+        };
+    
+        // Scroll to top when the button is clicked
+        document.getElementById('scrollToTop').onclick = function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Smooth scroll to top
+            });
+        };
+        // Get navbar element
+const navbar = document.querySelector('.navbar');
+
+// Variable to store the last scroll position
+let lastScrollPosition = 0;
+
+window.addEventListener('scroll', () => {
+    // Get the current scroll position
+    let currentScrollPosition = window.scrollY;
+
+    // If scrolling down and the scroll position is greater than last position
+    if (currentScrollPosition > lastScrollPosition) {
+        // Hide the navbar
+        navbar.style.top = '-60px';  // Adjust based on navbar height
+    } else {
+        // Show the navbar when scrolling up
+        navbar.style.top = '0';
+    }
+    
+    // Update the last scroll position to the current one
+    lastScrollPosition = currentScrollPosition;
+});
+document.addEventListener("DOMContentLoaded", function () {
+    const headings = document.querySelectorAll('.fade-in-heading');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = 'running';
+                observer.unobserve(entry.target); // Trigger only once
+            }
+        });
+    }, { threshold: 0.2 });
+
+    headings.forEach((heading) => {
+        heading.style.animationPlayState = 'paused'; // Start paused
+        observer.observe(heading);
+    });
+});
+
+    </script>
+    
+    
+</body>
+</html>

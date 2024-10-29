@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <!-- Navbar placeholder -->
+    <div id="navbar"></div>
+
+    <!-- Your page content goes here -->
+    <section id="about">
+        <h1>About Us</h1>
+        <p>Welcome to our company!</p>
+    </section>
+
+    <!-- JavaScript to load the navbar -->
+    <script>
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+            });
+    </script>
+</body>
+</html>

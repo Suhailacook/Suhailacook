@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to Website</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            overflow: hidden; /* Prevent scrolling */
+        }
+        .countdown {
+            font-size: 48px;
+            color: #333;
+            margin-top: 20px;
+        }
+        .pan {
+            position: relative;
+            width: 200px; /* Adjust width as necessary */
+            animation: bounce 1s infinite alternate; /* Bounce animation */
+        }
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+        .food {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px; /* Adjust size of food image */
+            animation: jump 0.5s infinite alternate; /* Jump animation */
+        }
+        @keyframes jump {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Frying_pan.png" alt="Pan" class="pan">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Fried_egg_on_a_plate.jpg" alt="Food" class="food">
+    <div class="countdown">Redirecting in <span id="timer">5</span> seconds...</div>
+
+    <script>
+        // Set the countdown time in seconds
+        let countdownTime = 5;
+
+        // Update the countdown every second
+        const timerElement = document.getElementById('timer');
+        const countdownInterval = setInterval(() => {
+            countdownTime--;
+            timerElement.textContent = countdownTime;
+
+            // When countdown reaches zero, redirect to the website
+            if (countdownTime <= 0) {
+                clearInterval(countdownInterval);
+                window.location.href = 'https://www.example.com'; // Replace with your website URL
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
