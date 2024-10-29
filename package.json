@@ -1,0 +1,21 @@
+{
+  "name": "suhaila-website",
+  "version": "1.0.0",
+  "description": "local experience",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "Suhaila",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "suhailacook"
+  },
+  "keywords": [
+    "SUhaila"
+  ],
+  "author": "Mohammed Dalaeen",
+  "license": "ISC"
+
+}
+
